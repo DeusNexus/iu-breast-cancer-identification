@@ -1,0 +1,51 @@
+Explore Dataset:
+[] **Exploratory Data Analysis (EDA)**: 
+- [] Conduct a thorough exploration of the dataset, 
+- [] examining statistical summaries, 
+- [] distributions, 
+- [] and relationships between variables.
+[] **Data Cleaning**: 
+- [] Check for missing values, 
+- [] outliers, and inconsistencies. 
+- [] Clearly document any data cleaning steps taken.
+[] **Visualizations**: Create visualizations to effectively communicate key relationships and patterns within the data, ensuring business partners can understand important aspects easily.
+
+Candidate Models:
+`Establish a collection of candidate models considering the task requirements. Focus on increasing complexity gradually while prioritizing interpretability. Key steps include:`
+[] **Model Training**: 
+- [] Train multiple models with varying complexities (e.g., logistic regression, decision trees, ensemble methods). 
+- [] Document the training process and hyperparameter choices.
+[] **Model Evaluations**: 
+- [] Evaluate the performance of each model using appropriate metrics, 
+- [] ensuring high accuracy (F1 score > 0.95). 
+- [] Provide detailed explanations of the evaluation results.
+[] **Best Model**: Select the best-performing model based on the 
+- [] evaluation metrics and 
+- [] feature importance analysis.
+
+[] **Interpretability** - Ensure the developed model is interpretable:
+- [] Utilize models with inherent interpretability, such as decision trees or linear models.
+- [] Provide clear explanations of the model's decision-making process.
+- [] Use visualizations to illustrate important aspects of the model's behavior.
+
+[] **Importance of Explanatory Variables** - Discuss the importance of each explanatory variable:
+- [] Conduct feature importance analysis to identify variables contributing significantly to model predictions.
+- [] Clearly communicate the relevance of each variable in the context of breast cancer prediction.
+
+[] **Detailed Error Analysis** - Perform a detailed error analysis to understand the weaknesses of the approach:
+- [] Identify common types of errors made by the model (e.g., false positives, false negatives).
+- [] Analyze specific instances where the model failed to make accurate predictions.
+- [] Provide insights into potential improvements or areas for further investigation.
+
+Making the Model Accessible for Operations
+[] **Propose how the developed model can be integrated into daily work:**
+- [] Design a graphical user interface (GUI) for easy interaction with the model.
+- [] Outline the steps for incorporating the model into the workflow of doctors.
+- [] Consider user-friendly features to enhance the acceptance and usability of the model.
+
+[] Write Project Case Study:
+- [] Introduction
+- [] Body
+- [] Conclusion
+- [] Recommendations
+- [] References
