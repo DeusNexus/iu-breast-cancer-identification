@@ -1,6 +1,6 @@
 # IU INTERNATIONAL UNIVERSITY OF APPLIED SCIENCES
-### Model Engineering (DLBDSME01)
-**Task 1: Development of an Interpretable Model for Breast Cancer Prediction**
+### Model Engineering (DLBDSME01) - **Task 1: Development of an Interpretable Model for Breast Cancer Prediction**
+
 Abstract: 
 ....
 
