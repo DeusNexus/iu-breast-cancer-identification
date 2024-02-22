@@ -15,30 +15,83 @@ A group of oncologists have seen impressive breast cancer identification results
 # Project Organization
 `Organize the project using the CRISP-DM or the MS Team Data Science method. Make a proposal on how to build the folder structure of a Git repository for the project.`
 
+The project will be organized using the CRISP-DM (Cross-Industry Standard Process for Data Mining) method. This method provides a structured approach to organizing and executing data science projects. The proposed Git repository structure is as follows:
+
+- **data**: This folder will contain the dataset and any additional data files.
+  - `data.csv`: File with a list of IDs, labels, and features for breast cancer classification.
+
+- **notebooks**: This folder will include Jupyter notebooks used for data exploration, preprocessing, model training, and evaluation.
+  - `1_data_exploration.ipynb`: Notebook for exploring the dataset.
+  - `2_data_preprocessing.ipynb`: Notebook for data cleaning and feature engineering.
+  - `3_model_training.ipynb`: Notebook for training different candidate models.
+  - `4_model_evaluation.ipynb`: Notebook for evaluating model performance.
+  - `5_interpretability_analysis.ipynb`: Notebook focusing on interpretability aspects.
+
+- **models**: This folder will store the trained models.
+  - `model1.pkl`: Trained model using [algorithm 1].
+  - `model2.pkl`: Trained model using [algorithm 2].
+  - ...
+
+- **visualizations**: This folder will contain visualizations generated during data exploration and model evaluation.
+  - `feature_importance.png`: Visualization of feature importance.
+  - `error_analysis.png`: Visualization of detailed error analysis.
+
+- **docs**: Documentation related to the project.
+  - `README.md`: Main project documentation.
+  - `project_report.pdf`: Final project report summarizing findings and decisions.
+
+- **scripts**: Any supporting scripts used in the project.
+  - `preprocessing.py`: Python script for data preprocessing.
+  - `model_evaluation.py`: Script for evaluating model performance.
+
 # Dataset Quality Evaluation
-`Assess the quality of the data set provided. Prepare and visualize your findings in such a way that business partners can understand the important relationships in a clear and simple way.`
+`Assess the quality of the provided dataset by performing the following tasks:`
+
+- **Exploratory Data Analysis (EDA)**: Conduct a thorough exploration of the dataset, examining statistical summaries, distributions, and relationships between variables.
+
+- **Data Cleaning**: Check for missing values, outliers, and inconsistencies. Clearly document any data cleaning steps taken.
+
+- **Visualizations**: Create visualizations to effectively communicate key relationships and patterns within the data, ensuring business partners can understand important aspects easily.
 
 # Candidate Models
-`Establish a collection of candidate models that meets the requirements and investigate feature importance on different models. (Tip: consider the interpretability of the models and increase complexity gradually. The accuracy should be high, but the interpretability of the model is the final aim.)`
-- Model Training
-- Model Evalations
-- Best Model
+`Establish a collection of candidate models considering the task requirements. Focus on increasing complexity gradually while prioritizing interpretability. Key steps include:`
+
+- **Model Training**: Train multiple models with varying complexities (e.g., logistic regression, decision trees, ensemble methods). Document the training process and hyperparameter choices.
+
+- **Model Evaluations**: Evaluate the performance of each model using appropriate metrics, ensuring high accuracy (F1 score > 0.95). Provide detailed explanations of the evaluation results.
+
+- **Best Model**: Select the best-performing model based on the evaluation metrics and feature importance analysis.
 
 ## Interpretability
-`Make the model results as interpretable as possible.`
+`Ensure the developed model is interpretable:`
+
+- Utilize models with inherent interpretability, such as decision trees or linear models.
+- Provide clear explanations of the model's decision-making process.
+- Use visualizations to illustrate important aspects of the model's behavior.
 
 ## Importance of Explanatory Variables
-`To help business partners develop confidence in your new model, discuss the importance of each explanatory variable.`
+`Discuss the importance of each explanatory variable:`
+
+- Conduct feature importance analysis to identify variables contributing significantly to model predictions.
+- Clearly communicate the relevance of each variable in the context of breast cancer prediction.
 
 ## Detailed Error Analysis
-`A detailed error analysis is very important so that the business partners also understand the weaknesses of your approach.`
+`Perform a detailed error analysis to understand the weaknesses of the approach:`
+
+- Identify common types of errors made by the model (e.g., false positives, false negatives).
+- Analyze specific instances where the model failed to make accurate predictions.
+- Provide insights into potential improvements or areas for further investigation.
 
 # Making the Model Accessible for Operations
-`In the last step of the project, propose how your model can be integrated into the daily work of the doctors, for example how a graphical user interface (GUI) could look like.`
+`Propose how the developed model can be integrated into daily work:`
 
-*** At the end of each step of this use case, you should critically assess whether all necessary operations have been conducted and argue for the decisions you have made during this process. ***
+- Design a graphical user interface (GUI) for easy interaction with the model.
+- Outline the steps for incorporating the model into the workflow of doctors.
+- Consider user-friendly features to enhance the acceptance and usability of the model.
 
-## How to get stared
+*** At the end of each step of this use case, critically assess whether all necessary operations have been conducted and provide justifications for the decisions made during the process. ***
+
+## How to get started
 ### Installation Instructions
 ...
 
