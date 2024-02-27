@@ -5,9 +5,9 @@ from typing import Dict, List, Union
 import pandas as pd
 
 def connect_db(
-        url='mongodb://localhost:27017/',
-        db_name='breast_cancer_mlops'
-    ):
+        url:str='mongodb://localhost:27017/',
+        db_name:str='breast_cancer_mlops'
+    ) -> MongoClient:
     """
     Establishes a connection to the MongoDB database.
     
@@ -26,7 +26,7 @@ def connect_db(
 
     return db
 
-def close_db(db):
+def close_db(db: MongoClient):
     """
     Closes the connection to the MongoDB database.
     
@@ -38,6 +38,17 @@ def close_db(db):
     """
     # Close client connection to database
     return db.close()
+
+def get_documents(
+        db: MongoClient,
+        collection: str,
+        query: object
+    ) -> object:
+
+    # Retrieve all documents matching the filter from the collection
+    matching_documents = db[collection].find(query)
+
+    return matching_documents
 
 def insert_original_document(
         db: MongoClient, 
@@ -98,18 +109,16 @@ def insert_original_document(
 
     try:
         # Insert the document into the specified collection
-        result = collection.insert_one(document)
-        print(f"Document inserted with _id: {result.inserted_id}")
-        return True
+        return collection.insert_one(document)
     except WriteError as e:
         print(f"Document failed validation: {e}")
         return False
 
 def insert_processed_document(
         db: MongoClient, 
-        processed_data_id: Union[int, str], 
-        original_data_id: Union[int, str], 
-        features: Dict[str, Union[int, float, str]], 
+        processed_data_id: Union[str], 
+        original_data_id: Union[str], 
+        features: Dict[str, Union[int, float, str, None]],
         steps: List[str], 
         processed_on: datetime, 
         processed_by: str, 
@@ -143,8 +152,7 @@ def insert_processed_document(
     #     features={}, 
     #     steps=["scaled", "encoded"], 
     #     processed_on="2024-03-01", 
-    #     processed_by="DataEngineerA", 
-    #     collection_date='2024-02-25', 
+    #     processed_by="DataEngineerA",  
     #     dataset_label='Breast_Cancer_Study_2024_Processed', 
     #     comments='Data scaled and encoded for model input.'
     # )
@@ -167,13 +175,20 @@ def insert_processed_document(
         }
     }
 
+    # Handle 'nan' and convert 'datetime' to 'string'
+    for key, value in document['features'].items():
+        if pd.isna(value):
+            document['features'][key] = ''  # Replace 'nan' with 0 or other appropriate value
+
+    document['processing_details']['processed_on'] = document['processing_details']['processed_on'].strftime('%Y-%m-%d')
+
+    # Now you can attempt to insert the document again
+
     print(document)
 
     try:
         # Insert the document into the specified collection
-        result = collection.insert_one(document)
-        print(f"Document inserted with _id: {result.inserted_id}")
-        return True
+        return collection.insert_one(document)
     except WriteError as e:
         print(f"Document failed validation: {e}")
         return False

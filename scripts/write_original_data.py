@@ -1,4 +1,4 @@
-from database import connect_db, close_db, insert_original_document, insert_processed_document
+from database import connect_db, close_db, insert_original_document
 from datetime import datetime
 from functools import wraps
 import pandas as pd
@@ -29,6 +29,16 @@ def db_operations(db, *args, **kwargs):
         collection_date = now  # Adjust if you have a specific column for the date
         source = "https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29"  # Define as needed
         dataset_label = "Breast Cancer Wisconsin Diagnostic"  # Define as needed
+
+        # Example:
+        # insert_original_document(
+        #     db, 
+        #     data_id='12345', 
+        #     features={}, 
+        #     collection_date='2024-02-25', 
+        #     source='Hospital XYZ', 
+        #     dataset_label='Breast_Cancer_Study_2024'
+        # )
 
         insert_original_document(
             db=db, 
