@@ -1,26 +1,27 @@
 # Importing necessary libraries and modules
 import os
+import sklearn
 from io import BytesIO
+import base64
+from sklearn.decomposition import PCA
+from pydantic import BaseModel
+from joblib import load
 from pathlib import Path
 from fastapi.responses import FileResponse
-from fastapi import FastAPI, File, UploadFile, HTTPException
+from fastapi import FastAPI, Form, UploadFile, HTTPException
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from typing import List
+import pandas as pd
 import numpy as np
-import json
+import matplotlib.pyplot as plt
 
-# Set TensorFlow logging level to suppress unnecessary warnings
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'  # or '3' to additionally suppress all warnings
+MODEL_TO_SERVE = 'train_logistic_reg_best_model_2024-02-29.joblib'
 
-# Load pre-trained Keras model architecture and weights from JSON file and H5 file, respectively
-with open("./models/best_model/best_model_architecture.json", "r") as json_file:
-    loaded_model_json = json_file.read()
+# Load model
+model = load(MODEL_TO_SERVE)
 
-keras_best_model = model_from_json(loaded_model_json)
-
-# keras_best_model.load_weights("./models/best_model/best_weights.h5")
-# keras_best_model.load_weights("./models/best_model/best_weights_balanced_dataset.h5")
-keras_best_model.load_weights("./models/best_model/best_weights_balanced-2_dataset.h5")
+print(model)
 
 # Define file paths for HTML, CSS, and favicon files
 html_file_path = Path(__file__).parent / "html" / "index.html"
@@ -30,7 +31,74 @@ favicon_file_path = Path(__file__).parent / "html" / "favicon.ico"
 # Initialize FastAPI app
 app = FastAPI()
 
-print('API Created')
+# Define a Pydantic model for your data
+class Features(BaseModel):
+    radius_mean: float
+    texture_mean: float
+    perimeter_mean: float
+    area_mean: float
+    smoothness_mean: float
+    compactness_mean: float
+    concavity_mean: float
+    concave_points_mean: float
+    symmetry_mean: float
+    fractal_dimension_mean: float
+    radius_se: float
+    texture_se: float
+    perimeter_se: float
+    area_se: float
+    smoothness_se: float
+    compactness_se: float
+    concavity_se: float
+    concave_points_se: float
+    symmetry_se: float
+    fractal_dimension_se: float
+    radius_worst: float
+    texture_worst: float
+    perimeter_worst: float
+    area_worst: float
+    smoothness_worst: float
+    compactness_worst: float
+    concavity_worst: float
+    concave_points_worst: float
+    symmetry_worst: float
+    fractal_dimension_worst: float
+
+##############################
+# Load current dataset from file, but in future this should be from database
+# Load the dataset
+dataset_path = 'dataset.csv'
+df = pd.read_csv(dataset_path)
+
+# Removing Empty Column
+df.drop(columns=['id','Unnamed: 32'],inplace=True)
+
+# Move diagnosis to be last column
+df['diagnosis'] = df.pop('diagnosis')
+
+# Prepare X_train, X_test, y_train, y_test
+X = df.drop(columns='diagnosis')
+y = df['diagnosis']
+################################
+
+##########################################################
+##### PCA FIGURE
+# Assuming 'B' and 'M' are represented as 0 and 1 in the target variable 'y'
+# Step 1: Apply PCA to reduce the features to 2 components
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X)
+
+# Step 2: Make predictions using the trained model
+predictions = model.predict(X)
+
+# Adjust the conditions to match string representations
+benign_indices = (y == 'B')
+malignant_indices = (y == 'M')
+
+# Ensure that correct and incorrect predictions are computed based on the actual values
+correct_predictions = (predictions == y.values)
+incorrect_predictions = ~correct_predictions
+###########################################################
 
 # Enable CORS for all origins (useful for local development)
 app.add_middleware(
@@ -40,32 +108,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-print('Middleware Created')
-
-# Define emotion labels
-labels = {
-    0: "anger",
-    1: "disgust",
-    2: "fear",
-    3: "happiness",
-    4: "sadness",
-    5: "surprise",
-    6: "neutral",
-}
-
-# Utility function to preprocess the image
-def preprocess_image(file):
-    # Read the content of the file into a BytesIO object
-    file_content = BytesIO(file.read())
-
-    # Load and preprocess the image using the same approach as in your testing code
-    img = image.load_img(file_content, target_size=(48, 48))
-    img_array = image.img_to_array(img)
-    img_array = np.expand_dims(img_array, axis=0)
-    img_array = img_array / 255.0  # Normalize to [0, 1] range
-
-    return img_array
 
 # Endpoint to serve the index.html file
 @app.get("/")
@@ -84,32 +126,72 @@ def get_favicon():
 
 # Endpoint to predict emotion based on the uploaded image
 @app.post("/api/predict")
-async def predict_emotion(file: UploadFile = File(...)):
+async def predict(features: Features):
     try:
-        # Preprocess the image
-        img_array = preprocess_image(file.file)
+        # Convert the Pydantic model to a numpy array
+        feature_values = [features.model_dump()[name] for name in features.model_dump()]
+        features_array = np.array(feature_values).reshape(1, -1)
+
+        # Transform the new data point with PCA
+        new_point_pca = pca.transform(features_array)
+
+        # Ensure the input is in the same format as during training, you might need to convert it to a DataFrame
+        # features_df = pd.DataFrame([feature_values], columns=features.dict().keys())
         
-        # Make predictions
-        predictions = keras_best_model.predict(img_array)
+        # Make predictions with your model
+        prediction = model.predict(features_array)
+        predicted_label = prediction[0]
 
-        # Get the predicted emotion (assuming your model has a softmax output layer)
-        predicted_emotion = int(np.argmax(predictions))
+        # If your model provides probabilities
+        probabilities = model.predict_proba(features_array)[0]
 
-        # Create a dictionary of class probabilities
-        class_probabilities_dict = []
-        for idx, prob in enumerate(predictions[0]):
-            class_probabilities_dict.append({ labels[idx]: prob })
-        class_probabilities = str({ key: value for item in class_probabilities_dict for key, value in item.items() })
+        # Now, let's adjust the plotting code accordingly
+        plt.figure(figsize=(15, 15))
+
+        # Benign correct (black circle)
+        plt.scatter(X_pca[benign_indices & correct_predictions, 0], X_pca[benign_indices & correct_predictions, 1], c='orange', marker='o', label='Benign Correct')
+
+        # Malignant correct (black triangle)
+        plt.scatter(X_pca[malignant_indices & correct_predictions, 0], X_pca[malignant_indices & correct_predictions, 1], c='lightblue', marker='o', label='Malignant Correct')
+
+        # Benign incorrect (red circle)
+        plt.scatter(X_pca[benign_indices & incorrect_predictions, 0], X_pca[benign_indices & incorrect_predictions, 1], c='black', marker='^', label='Benign Incorrect')
+
+        # Malignant incorrect (red triangle)
+        plt.scatter(X_pca[malignant_indices & incorrect_predictions, 0], X_pca[malignant_indices & incorrect_predictions, 1], c='black', marker='x', label='Malignant Incorrect')
+
+        # Plot the new data point on the PCA plot
+        plt.scatter(new_point_pca[:, 0], new_point_pca[:, 1], c='blue', label='New Data Point', marker='o')
+
+        plt.xlabel('PCA1')
+        plt.ylabel('PCA2')
+        plt.title('PCA of Predictions with Class Distinctions')
+        plt.tight_layout()
+        plt.legend()
+
+        # Save the plot to a BytesIO object
+        buf = BytesIO()
+        plt.savefig(buf, format='png')
+        plt.close()
+        buf.seek(0)
+
+        # Encode the image in memory as base64
+        image_base64 = base64.b64encode(buf.read()).decode('utf-8')
+        ### END PCA FIGURE
+
+
+        b_prob, m_prob = probabilities
+
+        # Create a response dictionary
+        response_dict = {
+            "predicted_class": predicted_label,
+            "probabilities": f'B: {round(b_prob * 100,4)}% \nM: {round(m_prob * 100,4)}%',
+            "image": image_base64
+        }
 
         # Return predictions in JSON format
-        return JSONResponse(content={
-            "predicted_emotion": predicted_emotion,
-            "predicted_emotion_label": labels[int(predicted_emotion)],
-            "class_probabilities": class_probabilities,
-            "label_encodings": labels
-        }, status_code=200)
+        return JSONResponse(content=response_dict, status_code=200)
     
     except Exception as e:
-        # Handle exceptions and return an Internal Server Error if necessary
         print("Error:", e)
-        raise HTTPException(status_code=500, detail="Internal Server Error")
+        raise HTTPException(status_code=500, detail=str(e))

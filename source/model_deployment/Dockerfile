@@ -24,10 +24,8 @@ RUN mkdir /app/html
 COPY html/* /app/html/
 
 # Make a dir and copy the best model (balanced dataset 2) which will be used for predictions
-RUN mkdir app/models
-RUN mkdir app/models/best_model
-COPY best_model_architecture.json app/models/best_model/best_model_architecture.json
-COPY best_weights_balanced-2_dataset.h5 app/models/best_model/best_weights_balanced-2_dataset.h5
+COPY train_logistic_reg_best_model_2024-02-29.joblib app/train_logistic_reg_best_model_2024-02-29.joblib
+COPY dataset.csv app/dataset.csv
 
 # Set the workdir to app
 WORKDIR /app

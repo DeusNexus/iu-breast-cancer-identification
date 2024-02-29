@@ -5,81 +5,335 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
-    <title>Emotion Detection</title>
+    <title>Breast Cancer Classification</title>
 </head>
     <body>
         <div class="container">
-            <h1>Emotion Detection</h1>
-            
-            <form id="uploadForm">
-                <div class="input-container">
-                    <label for="fileInput"><b>Select an image:</b></label>
-                    <input type="file" id="fileInput" accept="image/*" required onchange="displayImage()">
-                </div>
-
-                <div class="image-container">
-                    <img id="selectedImage" alt="Selected Image">
-                </div>
+            <h1>Breast Cancer Classification</h1>
+            <div class="example-selector">
+                <label for="exampleData">Choose an example dataset:</label>
+                <select name="exampleData" id="exampleData" onchange="fillExampleData()">
+                    <option value="">Select an example...</option>
+                    <option value="1">Example 1 (True=M)</option>
+                    <option value="2">Example 2 (True=B)</option>
+                    <option value="3">Example 3 (True=M)</option>
+                    <option value="4">Example 4 (True=B)</option>
+                    <option value="5">Clear Values</option>
+                </select>
+            </div>
+            <form id="dataInputForm">
+                <form id="dataInputForm">
+                    <div class="row">
+                        <!-- Column for _mean attributes -->
+                        <div class="column">
+                            <h4>Mean Attributes</h2>
+                            <label for="radius_mean">radius_mean:</label><br>
+                            <input type="text" id="radius_mean" required><br>
+                            <label for="texture_mean">texture_mean:</label><br>
+                            <input type="text" id="texture_mean" required><br>
+                            <label for="perimeter_mean">perimeter_mean:</label><br>
+                            <input type="text" id="perimeter_mean" required><br>
+                            <label for="area_mean">area_mean:</label><br>
+                            <input type="text" id="area_mean" required><br>
+                            <label for="smoothness_mean">smoothness_mean:</label><br>
+                            <input type="text" id="smoothness_mean" required><br>
+                            <label for="compactness_mean">compactness_mean:</label><br>
+                            <input type="text" id="compactness_mean" required><br>
+                            <label for="concavity_mean">concavity_mean:</label><br>
+                            <input type="text" id="concavity_mean" required><br>
+                            <label for="concave_points_mean">concave points_mean:</label><br>
+                            <input type="text" id="concave_points_mean" required><br>
+                            <label for="symmetry_mean">symmetry_mean:</label><br>
+                            <input type="text" id="symmetry_mean" required><br>
+                            <label for="fractal_dimension_mean">fractal_dimension_mean:</label><br>
+                            <input type="text" id="fractal_dimension_mean" required><br>
+                        </div>
+        
+                        <!-- Column for _se attributes -->
+                        <div class="column">
+                            <h4>SE Attributes</h2>
+                            <label for="radius_se">radius_se:</label><br>
+                            <input type="text" id="radius_se" required><br>
+                            <label for="texture_se">texture_se:</label><br>
+                            <input type="text" id="texture_se" required><br>
+                            <label for="perimeter_se">perimeter_se:</label><br>
+                            <input type="text" id="perimeter_se" required><br>
+                            <label for="area_se">area_se:</label><br>
+                            <input type="text" id="area_se" required><br>
+                            <label for="smoothness_se">smoothness_se:</label><br>
+                            <input type="text" id="smoothness_se" required><br>
+                            <label for="compactness_se">compactness_se:</label><br>
+                            <input type="text" id="compactness_se" required><br>
+                            <label for="concavity_se">concavity_se:</label><br>
+                            <input type="text" id="concavity_se" required><br>
+                            <label for="concave_points_se">concave points_se:</label><br>
+                            <input type="text" id="concave_points_se" required><br>
+                            <label for="symmetry_se">symmetry_se:</label><br>
+                            <input type="text" id="symmetry_se" required><br>
+                            <label for="fractal_dimension_se">fractal_dimension_se:</label><br>
+                            <input type="text" id="fractal_dimension_se" required><br>
+                        </div>
+        
+                        <!-- Column for _worst attributes -->
+                        <div class="column">
+                            <h4>Worst Attributes</h2>
+                            <label for="radius_worst">radius_worst:</label><br>
+                            <input type="text" id="radius_worst" required><br>
+                            <label for="texture_worst">texture_worst:</label><br>
+                            <input type="text" id="texture_worst" required><br>
+                            <label for="perimeter_worst">perimeter_worst:</label><br>
+                            <input type="text" id="perimeter_worst" required><br>
+                            <label for="area_worst">area_worst:</label><br>
+                            <input type="text" id="area_worst" required><br>
+                            <label for="smoothness_worst">smoothness_worst:</label><br>
+                            <input type="text" id="smoothness_worst" required><br>
+                            <label for="compactness_worst">compactness_worst:</label><br>
+                            <input type="text" id="compactness_worst" required><br>
+                            <label for="concavity_worst">concavity_worst:</label><br>
+                            <input type="text" id="concavity_worst" required><br>
+                            <label for="concave_points_worst">concave points_worst:</label><br>
+                            <input type="text" id="concave_points_worst" required><br>
+                            <label for="symmetry_worst">symmetry_worst:</label><br>
+                            <input type="text" id="symmetry_worst" required><br>
+                            <label for="fractal_dimension_worst">fractal_dimension_worst:</label><br>
+                            <input type="text" id="fractal_dimension_worst" required><br>
+                        </div>
+                    </div>
+                </form>
 
                 <div class="buttons-container">
-                    <div class="button-div">
-                        <button type="button" onclick="predict()">Predict</button>
-                    </div>
+                    <button type="button" onclick="predict()">Predict</button>
                 </div>
+
             </form>
 
             <div id="result"></div>
+        </div>
+
+        <div class="container2">
+            <div class="image-container">
+                <img id="selectedImage" alt="Selected Image">
+            </div>
+        </div>
 
         <script>
-            function displayImage() {
-                const fileInput = document.getElementById('fileInput');
-                const selectedImage = document.getElementById('selectedImage');
-                
-                const file = fileInput.files[0];
-                
-                if (file) {
-                    const reader = new FileReader();
-                    
-                    reader.onload = function (e) {
-                        selectedImage.src = e.target.result;
-                        selectedImage.style.display = 'block';
-                    };
-                    
-                    reader.readAsDataURL(file);
-                } else {
-                    selectedImage.src = '';
-                    selectedImage.style.display = 'none';
+            function fillExampleData() {
+                const exampleData = {
+                    '1': {
+                        radius_mean: 16.13,
+                        texture_mean: 20.68,
+                        perimeter_mean: 108.1,
+                        area_mean: 798.8,
+                        smoothness_mean: 0.117,
+                        compactness_mean: 0.2022,
+                        concavity_mean: 0.1722,
+                        concave_points_mean: 0.1028,
+                        symmetry_mean: 0.2164,
+                        fractal_dimension_mean: 0.07356,
+                        radius_se: 0.5692,
+                        texture_se: 1.073,
+                        perimeter_se: 3.854,
+                        area_se: 54.18,
+                        smoothness_se: 0.007026,
+                        compactness_se: 0.02501,
+                        concavity_se: 0.03188,
+                        concave_points_se: 0.01297,
+                        symmetry_se: 0.01689,
+                        fractal_dimension_se: 0.004142,
+                        radius_worst: 20.96,
+                        texture_worst: 31.48,
+                        perimeter_worst: 136.8,
+                        area_worst: 1315,
+                        smoothness_worst: 0.1789,
+                        compactness_worst: 0.4233,
+                        concavity_worst: 0.4784,
+                        concave_points_worst: 0.2073,
+                        symmetry_worst: 0.3706,
+                        fractal_dimension_worst: 0.1142
+                    },
+                    '2': {
+                        radius_mean: 13.54,
+                        texture_mean: 14.36,
+                        perimeter_mean: 87.46,
+                        area_mean: 566.3,
+                        smoothness_mean: 0.09779,
+                        compactness_mean: 0.08129,
+                        concavity_mean: 0.06664,
+                        concave_points_mean: 0.04781,
+                        symmetry_mean: 0.1885,
+                        fractal_dimension_mean: 0.05766,
+                        radius_se: 0.2699,
+                        texture_se: 0.7886,
+                        perimeter_se: 2.058,
+                        area_se: 23.56,
+                        smoothness_se: 0.008462,
+                        compactness_se: 0.0146,
+                        concavity_se: 0.02387,
+                        concave_points_se: 0.01315,
+                        symmetry_se: 0.0198,
+                        fractal_dimension_se: 0.0023,
+                        radius_worst: 15.11,
+                        texture_worst: 19.26,
+                        perimeter_worst: 99.7,
+                        area_worst: 711.2,
+                        smoothness_worst: 0.144,
+                        compactness_worst: 0.1773,
+                        concavity_worst: 0.239,
+                        concave_points_worst: 0.1288,
+                        symmetry_worst: 0.2977,
+                        fractal_dimension_worst: 0.07259
+                    },
+                    '3': {
+                        radius_mean: 17.57,
+                        texture_mean: 15.05,
+                        perimeter_mean: 115,
+                        area_mean: 955.1,
+                        smoothness_mean: 0.09847,
+                        compactness_mean: 0.1157,
+                        concavity_mean: 0.09875,
+                        concave_points_mean: 0.07953,
+                        symmetry_mean: 0.1739,
+                        fractal_dimension_mean: 0.06149,
+                        radius_se: 0.6003,
+                        texture_se: 0.8225,
+                        perimeter_se: 4.655,
+                        area_se: 61.1,
+                        smoothness_se: 0.005627,
+                        compactness_se: 0.03033,
+                        concavity_se: 0.03407,
+                        concave_points_se: 0.01354,
+                        symmetry_se: 0.01925,
+                        fractal_dimension_se: 0.003742,
+                        radius_worst: 20.01,
+                        texture_worst: 19.52,
+                        perimeter_worst: 134.9,
+                        area_worst: 1227,
+                        smoothness_worst: 0.1255,
+                        compactness_worst: 0.2812,
+                        concavity_worst: 0.2489,
+                        concave_points_worst: 0.1456,
+                        symmetry_worst: 0.2756,
+                        fractal_dimension_worst: 0.07919
+                    },
+                    '4': {
+                        radius_mean: 8.196,
+                        texture_mean: 16.84,
+                        perimeter_mean: 51.71,
+                        area_mean: 201.9,
+                        smoothness_mean: 0.086,
+                        compactness_mean: 0.05943,
+                        concavity_mean: 0.01588,
+                        concave_points_mean: 0.005917,
+                        symmetry_mean: 0.1769,
+                        fractal_dimension_mean: 0.06503,
+                        radius_se: 0.1563,
+                        texture_se: 0.9567,
+                        perimeter_se: 1.094,
+                        area_se: 8.205,
+                        smoothness_se: 0.008968,
+                        compactness_se: 0.01646,
+                        concavity_se: 0.01588,
+                        concave_points_se: 0.005917,
+                        symmetry_se: 0.02574,
+                        fractal_dimension_se: 0.002582,
+                        radius_worst: 8.964,
+                        texture_worst: 21.96,
+                        perimeter_worst: 57.26,
+                        area_worst: 242.2,
+                        smoothness_worst: 0.1297,
+                        compactness_worst: 0.1357,
+                        concavity_worst: 0.0688,
+                        concave_points_worst: 0.02564,
+                        symmetry_worst: 0.3105,
+                        fractal_dimension_worst: 0.07409
+                    },
+                    '5':{
+                        radius_mean: '',
+                        texture_mean: '',
+                        perimeter_mean: '',
+                        area_mean: '',
+                        smoothness_mean: '',
+                        compactness_mean: '',
+                        concavity_mean: '',
+                        concave_points_mean: '',
+                        symmetry_mean: '',
+                        fractal_dimension_mean: '',
+                        radius_se: '',
+                        texture_se: '',
+                        perimeter_se: '',
+                        area_se: '',
+                        smoothness_se: '',
+                        compactness_se: '',
+                        concavity_se: '',
+                        concave_points_se: '',
+                        symmetry_se: '',
+                        fractal_dimension_se: '',
+                        radius_worst: '',
+                        texture_worst: '',
+                        perimeter_worst: '',
+                        area_worst: '',
+                        smoothness_worst: '',
+                        compactness_worst: '',
+                        concavity_worst: '',
+                        concave_points_worst: '',
+                        symmetry_worst: '',
+                        fractal_dimension_worst: '',
+                    }
+                };
+
+                const selectedValue = document.getElementById('exampleData').value;
+                const selectedExample = exampleData[selectedValue];
+
+                if (selectedExample) {
+                    for (const [key, value] of Object.entries(selectedExample)) {
+                        const inputField = document.getElementById(key);
+                        if (inputField) {
+                            inputField.value = value;
+                        }
+                    }
                 }
             }
 
             async function predict() {
-                const fileInput = document.getElementById('fileInput');
-                const file = fileInput.files[0];
+                const feature_names = [
+                    "radius_mean", "texture_mean", "perimeter_mean", "area_mean", "smoothness_mean",
+                    "compactness_mean", "concavity_mean", "concave_points_mean", "symmetry_mean", "fractal_dimension_mean",
+                    "radius_se", "texture_se", "perimeter_se", "area_se", "smoothness_se",
+                    "compactness_se", "concavity_se", "concave_points_se", "symmetry_se", "fractal_dimension_se",
+                    "radius_worst", "texture_worst", "perimeter_worst", "area_worst", "smoothness_worst",
+                    "compactness_worst", "concavity_worst", "concave_points_worst", "symmetry_worst", "fractal_dimension_worst"
+                ];
 
-                if (file) {
-                    const formData = new FormData();
-                    formData.append('file', file);
+                const inputData = {};
+                feature_names.forEach((name) => {
+                    inputData[name] = document.getElementById(name).value;
+                });
 
-                    try {
-                        const response = await fetch('http://localhost:8000/api/predict', {
-                            method: 'POST',
-                            body: formData
-                        });
+                try {
+                    const response = await fetch('http://localhost:8000/api/predict', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(inputData)
+                    });
 
+                    if (response.ok) {
                         const data = await response.json();
                         const resultDiv = document.getElementById('result');
-                        resultDiv.innerHTML =  `<p><b>Predicted Emotion:</b> ${data.predicted_emotion}</p> \
-                                                <p><b>Predicted Emotion Label:</b> ${data.predicted_emotion_label}</p> \
-                                                <p><b>Class Probabilities:</b> ${data.class_probabilities}</p>`;
+                        resultDiv.innerHTML = `<p><b>Predicted Class:</b> ${data.predicted_class}</p> \
+                                            <p><b>Class Probabilities:</b> ${data.probabilities}</p>`;
 
-                    } catch (error) {
-                        console.error('Error predicting emotion:', error);
+                        // Display the generated figure.jpg
+                        const imageContainer = document.querySelector('.image-container');
+                        imageContainer.innerHTML = `<img src="data:image/png;base64,${data.image}" alt="Prediction Figure">`;
+                    } else {
+                        console.error('Failed to fetch prediction:', response.statusText);
                     }
-                } else {
-                    alert('Please select an image file.');
+                } catch (error) {
+                    console.error('Error during prediction:', error);
                 }
             }
         </script>
-    </div>
 </body>
 </html>
