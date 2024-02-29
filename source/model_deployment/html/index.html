@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Emotion Detection</title>
+</head>
+    <body>
+        <div class="container">
+            <h1>Emotion Detection</h1>
+            
+            <form id="uploadForm">
+                <div class="input-container">
+                    <label for="fileInput"><b>Select an image:</b></label>
+                    <input type="file" id="fileInput" accept="image/*" required onchange="displayImage()">
+                </div>
+
+                <div class="image-container">
+                    <img id="selectedImage" alt="Selected Image">
+                </div>
+
+                <div class="buttons-container">
+                    <div class="button-div">
+                        <button type="button" onclick="predict()">Predict</button>
+                    </div>
+                </div>
+            </form>
+
+            <div id="result"></div>
+
+        <script>
+            function displayImage() {
+                const fileInput = document.getElementById('fileInput');
+                const selectedImage = document.getElementById('selectedImage');
+                
+                const file = fileInput.files[0];
+                
+                if (file) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function (e) {
+                        selectedImage.src = e.target.result;
+                        selectedImage.style.display = 'block';
+                    };
+                    
+                    reader.readAsDataURL(file);
+                } else {
+                    selectedImage.src = '';
+                    selectedImage.style.display = 'none';
+                }
+            }
+
+            async function predict() {
+                const fileInput = document.getElementById('fileInput');
+                const file = fileInput.files[0];
+
+                if (file) {
+                    const formData = new FormData();
+                    formData.append('file', file);
+
+                    try {
+                        const response = await fetch('http://localhost:8000/api/predict', {
+                            method: 'POST',
+                            body: formData
+                        });
+
+                        const data = await response.json();
+                        const resultDiv = document.getElementById('result');
+                        resultDiv.innerHTML =  `<p><b>Predicted Emotion:</b> ${data.predicted_emotion}</p> \
+                                                <p><b>Predicted Emotion Label:</b> ${data.predicted_emotion_label}</p> \
+                                                <p><b>Class Probabilities:</b> ${data.class_probabilities}</p>`;
+
+                    } catch (error) {
+                        console.error('Error predicting emotion:', error);
+                    }
+                } else {
+                    alert('Please select an image file.');
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
