@@ -44,6 +44,10 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
   - `preprocessing.py`: Python script for data preprocessing.
   - `model_evaluation.py`: Script for evaluating model performance.
 
+###
+*** At the end of each step of this use case, critically assess whether all necessary operations have been conducted and provide justifications for the decisions made during the process. ***
+###
+
 # Dataset Quality Evaluation
 `Assess the quality of the provided dataset by performing the following tasks:`
 
@@ -89,9 +93,7 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 - Outline the steps for incorporating the model into the workflow of doctors.
 - Consider user-friendly features to enhance the acceptance and usability of the model.
 
-*** At the end of each step of this use case, critically assess whether all necessary operations have been conducted and provide justifications for the decisions made during the process. ***
-
-# Front-end of Docker API
+## Front-end of Docker API
 ### See more information in source/model_deployment/README.md
 The trained model uses the Logistic Classifier that performed the best according to all the collected metrics and results.
 - The user can select one of the example data to be predicted by the model or fill out their own numeric data.
@@ -100,8 +102,8 @@ The trained model uses the Logistic Classifier that performed the best according
 - The PCA plot gives great insight how the newly classified datapoint relates and if it is close to the incorrectly predicted ones or where the two classes are difficult to distinguish extra care can be taken.
 ![docker-api front-end](/docs/docker_api.png)
 
-# How to get started
-## Dependencies for using the Jupyter Notebooks
+## How to get started
+### Dependencies for using the Jupyter Notebooks
 Create a new virtual python environment for the notebooks.
 
 `python3 -m venv venv`
@@ -122,10 +124,10 @@ Install the dependencies
 ### Open the API on localhost
 `http://127.0.0.1:8000`
 
-## Reflection
+# Reflection
 ...
 
-## Conclusion
+# Conclusion
 ...
 
 # Disclaimer
