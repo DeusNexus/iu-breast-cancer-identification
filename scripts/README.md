@@ -53,10 +53,10 @@
 The MongoDB Compass can be used as GUI to view the inserted data, as seen in the example images.
 
 **Database Collections of the Breast Cancer Project**
-![MongoDB Central Database Collections](docs/mongodb_collections.png)
+![MongoDB Central Database Collections](../docs/mongodb_collections.png)
 
 **Original Datasets (unprocessed entries)**
-![MongoDB Collection Original Data](docs/mongodb_original_data.png)
+![MongoDB Collection Original Data](../docs/mongodb_original_data.png)
 
 **Processed Datasets (any altered data)**
-![MongoDB Collection Processed Data](docs/mongodb_processed_data.png)
+![MongoDB Collection Processed Data](../docs/mongodb_processed_data.png)
