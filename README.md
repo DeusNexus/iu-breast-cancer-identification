@@ -13,36 +13,66 @@ A group of oncologists have seen impressive breast cancer identification results
 `Support a group of oncologists with the interpretable prediction model to allow for additional indications that can be produced automatically as well as support understanding to ease technology acceptance.`
 
 # Project Organization
-`Organize the project using the CRISP-DM or the MS Team Data Science method. Make a proposal on how to build the folder structure of a Git repository for the project.`
+`Organize the project using the CRISP-DM. Make a proposal on how to build the folder structure of a Git repository for the project.`
 
 The project will be organized using the CRISP-DM (Cross-Industry Standard Process for Data Mining) method. This method provides a structured approach to organizing and executing data science projects. The proposed Git repository structure is as follows:
 
-- **data**: This folder will contain the dataset and any additional data files.
+- **data/original_data**: This folder will contain the dataset and any additional data files.
   - `data.csv`: File with a list of IDs, labels, and features for breast cancer classification.
+  - `Addition_Information_Case_Study_Task_1.pdf`: File will information about the `dataset.csv` (columns, attributes, further info)
+- **data/processed_data**:
+  - Data that is processed is stored in central database MongoDB under the `processed_data` collection along with metadata for versioning and how the data has been processed.
+  - This folder is purely for staging and should not really be used to store data. For sake of simplicity data in the notebooks is not loaded from the database but the general concept and metadata is still explained and given.
 
-- **notebooks**: This folder will include Jupyter notebooks used for data exploration, preprocessing, model training, and evaluation.
-  - `1_data_exploration.ipynb`: Notebook for exploring the dataset.
+- **docs**: Documentation related to the projec including the necessary created documents and media created during the training, evaluation, deployment and additional for clarifying the process.
+  - `README.md`: Main project documentation.
+  - `project_report.pdf`: Final project report summarizing findings and decisions.
+  - `media`: Images
+
+- **notebooks**: This folder will include Jupyter notebooks used for data exploration.
+  - `exploratory_data_analysis.ipynb`: Notebook for exploring the dataset.
+
+- **scripts**: Any supporting scripts used in the project to processed data or interact with database.
+  - `database.py`: Contains all methods to connect and insert original or processed data to the MongoDB database collections `original_data` and `processed_data`.
+  - `write_original_data.py`: Python script commiting the original data to the database with metadata enrichment for data versioning.
+  - `write_processed_data.py`: Python script for commiting processed data to the database with metadata and include the data processing steps.
+  - `README.md`: For for clarification.
+
+- **source**: Contains the model_training, model_evaluation and model_deployment steps of CRISP-DM.
+  - **source/model_training**:
+    - `model_training.ipynb`: Notebook for training different candidate models.
+    - `train_logistic_reg_best_model_2024-02-29.joblib`: Trained model using LogisticRegression model from scikit-learn.
+    - `train_model_best_cv_nsplit_accuracy.csv`: Training artifact to see best cross-validation splits using accuracy metric.
+    - `train_model_result_metrics.csv`: All trained models with their individual performances and their interpretability:
+      - Model, Interpretability, F1 Score, ROC AUC, Recall, Precision, Accuracy (Testing), Accuracy (Training)
+  - **source/model_evaluation**:
+    - `model_evaluation.ipynb`: Notebook for evaluating model performance.
+    - `evaluate_best_model_feature_importance_standardized_vs_regular_ci.csv`: Evaluation artifact containing the most important features, their ci error interval, standardized and non-standardized values.
+  - **source/model_deployment**: Folder for model deployment, including `Dockerfile` for building an image.
+    - `/html`: Folder with front-end index.html file and css.
+    - `dataset.csv`: Used by the Dockerfile make the current dataset available (used for predictions, PCA1 & PCA2 mappings)
+    - `main.py`: File used by FastAPI
+    - `requirements.txt`: Python module requirements to be installed in the Docker image.
+    - `train_logistic_reg_best_model_2024-02-29.joblib`: Saved LogisticRegression model that is loaded in the Docker image for predictions.
+    - `README.md`: Additional information on Docker Image - Use, Building, etc. #############################################################################(TO BE UPDATED)
+
+- `.gitignore`: File to ignore github uploads of venv, venv-docker, __pycache__
+- `LICENSE`: License file
+- `requirements.txt`: Requirements file to run the notebooks.
+
+
+
+
+#### NOT USED!^$&*$
   - `2_data_preprocessing.ipynb`: Notebook for data cleaning and feature engineering.
-  - `3_model_training.ipynb`: Notebook for training different candidate models.
-  - `4_model_evaluation.ipynb`: Notebook for evaluating model performance.
   - `5_interpretability_analysis.ipynb`: Notebook focusing on interpretability aspects.
-
-- **models**: This folder will store the trained models.
-  - `model1.pkl`: Trained model using [algorithm 1].
-  - `model2.pkl`: Trained model using [algorithm 2].
-  - ...
-
 - **visualizations**: This folder will contain visualizations generated during data exploration and model evaluation.
   - `feature_importance.png`: Visualization of feature importance.
   - `error_analysis.png`: Visualization of detailed error analysis.
 
-- **docs**: Documentation related to the project.
-  - `README.md`: Main project documentation.
-  - `project_report.pdf`: Final project report summarizing findings and decisions.
 
-- **scripts**: Any supporting scripts used in the project.
-  - `preprocessing.py`: Python script for data preprocessing.
-  - `model_evaluation.py`: Script for evaluating model performance.
+
+
 
 ###
 *** At the end of each step of this use case, critically assess whether all necessary operations have been conducted and provide justifications for the decisions made during the process. ***
@@ -94,7 +124,7 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 - Consider user-friendly features to enhance the acceptance and usability of the model.
 
 ## Front-end of Docker API
-### See more information in source/model_deployment/README.md
+### See more information in [source/model_deployment/README.md](./source/model_deployment/README.md)
 The trained model uses the Logistic Classifier that performed the best according to all the collected metrics and results.
 - The user can select one of the example data to be predicted by the model or fill out their own numeric data.
 - The user clicks predict.
