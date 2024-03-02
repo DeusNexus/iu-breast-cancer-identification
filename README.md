@@ -91,9 +91,36 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 
 *** At the end of each step of this use case, critically assess whether all necessary operations have been conducted and provide justifications for the decisions made during the process. ***
 
-## How to get started
-### Installation Instructions
-...
+# Front-end of Docker API
+### See more information in source/model_deployment/README.md
+The trained model uses the Logistic Classifier that performed the best according to all the collected metrics and results.
+- The user can select one of the example data to be predicted by the model or fill out their own numeric data.
+- The user clicks predict.
+- The predicted class (B)enign or (M)alignant, class probabilty and how it relates to the trained model predictions on the PCA1 and PCA2 is displayed.
+- The PCA plot gives great insight how the newly classified datapoint relates and if it is close to the incorrectly predicted ones or where the two classes are difficult to distinguish extra care can be taken.
+![docker-api front-end](/docs/docker_api.png)
+
+# How to get started
+## Dependencies for using the Jupyter Notebooks
+Create a new virtual python environment for the notebooks.
+
+`python3 -m venv venv`
+
+Activate the environment (Linux)
+
+`source venv/bin/activate`
+
+Install the dependencies
+
+`pip3 install -r requirements.txt`
+
+## API usage using pre-build docker image
+### Pull the latest build image
+`docker pull deusnexus/breast_cancer_classification:latest` 
+### Run the container
+`docker run --name breast_cancer_classification -p 8000:8000 deusnexus/breast_cancer_classification:latest`
+### Open the API on localhost
+`http://127.0.0.1:8000`
 
 ## Reflection
 ...
