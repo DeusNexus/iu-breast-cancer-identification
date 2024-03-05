@@ -59,8 +59,11 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
   - `requirements.txt`: Python module requirements to be installed in the Docker image.
   - `train_logistic_reg_best_model_2024-02-29.joblib`: Saved LogisticRegression model that is loaded in the Docker image for predictions.
   - `README.md`: Additional information on Docker Image - Use, Building, etc.
+
 `.gitignore`: File to ignore github uploads of venv, venv-docker, __pycache__
+
 `LICENSE`: License file
+
 `requirements.txt`: Requirements file to run the notebooks.
 
 
