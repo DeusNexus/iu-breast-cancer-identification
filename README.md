@@ -75,14 +75,18 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 - **Visualizations**: Create visualizations to effectively communicate key relationships and patterns within the data, ensuring business partners can understand important aspects easily.
 
 # Candidate Models
-**Train Model Accuracies**
-<img src="/docs/train_model_accuracies_cv_nsplit.jpg" alt="Train Model Accuracies" width="500">
+**Interpretability Rating**
+
+<img src="/docs/train_model_comparison_with_interpretability.jpg" alt="Interpretability Rating" width="500">
 
 **Comparison ROC AUC Scores**
+
 <img src="/docs/train_model_metrics_comparison_roc_auc_scores.jpg" alt="Comparison ROC AUC Scores" width="500">
 
-**Interpretability Rating**
-<img src="/docs/train_model_comparison_with_interpretability.jpg" alt="Interpretability Rating" width="500">
+**Selected Train Model Accuracies**
+
+<img src="/docs/train_model_accuracies_cv_nsplit.jpg" alt="Train Model Accuracies" width="500">
+
 
 
 ## Interpretability
