@@ -101,10 +101,10 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 
 ## Detailed Error Analysis
 `Perform a detailed error analysis to understand the weaknesses of the approach:`
-![Evaluate Confusion matrix](/docs/evaluate_best_model_logistic_confusion_matrix.jpg)
-![Evaluate Feature importance rank](/docs/evaluate_best_model_logistic_feature_importance_rank.jpg)
-![Evaluate PCA predict correct incorrect](/docs/evaluate_best_model_logistic_PCA_predictions_correct_incorrect.jpg)
-![Evaluate ROC Curve](/docs/evaluate_best_model_logistic_roc_curve.jpg)
+<img src="/docs/evaluate_best_model_logistic_confusion_matrix.jpg" alt="Evaluate Confusion matrix" width="750">
+<img src="/docs/evaluate_best_model_logistic_feature_importance_rank.jpg" alt="Evaluate Feature importance rank" width="750">
+<img src="/docs/evaluate_best_model_logistic_PCA_predictions_correct_incorrect.jpg" alt="Evaluate PCA predict correct incorrect" width="750">
+<img src="/docs/evaluate_best_model_logistic_roc_curve.jpg" alt="Evaluate ROC Curve" width="750">
 
 
 - Identify common types of errors made by the model (e.g., false positives, false negatives).
@@ -125,7 +125,7 @@ The trained model uses the Logistic Classifier that performed the best according
 - The user clicks predict.
 - The predicted class (B)enign or (M)alignant, class probabilty and how it relates to the trained model predictions on the PCA1 and PCA2 is displayed.
 - The PCA plot gives great insight how the newly classified datapoint relates and if it is close to the incorrectly predicted ones or where the two classes are difficult to distinguish extra care can be taken.
-![docker-api front-end](/docs/deploy_model_docker_api.png)
+<img src="/docs/deploy_model_docker_api.png" alt="Deploy Docker-api front-end" width="750">
 
 ## How to get started
 ### Dependencies for using the Jupyter Notebooks
