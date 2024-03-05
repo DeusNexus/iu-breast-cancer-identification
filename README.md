@@ -164,12 +164,6 @@ For future improvement, it is recommended to:
 - Consider the possibility of overfitting and evaluate the model complexity to ensure it is appropriate for the data's inherent complexity.
 
 # Making the Model Accessible for Operations
-`Propose how the developed model can be integrated into daily work:`
-
-- Design a graphical user interface (GUI) for easy interaction with the model.
-- Outline the steps for incorporating the model into the workflow of doctors.
-- Consider user-friendly features to enhance the acceptance and usability of the model.
-
 ## Front-end of Docker API
 ### See more information in [source/model_deployment/README.md](./source/model_deployment/README.md)
 The trained model uses the Logistic Classifier that performed the best according to all the collected metrics and results.
