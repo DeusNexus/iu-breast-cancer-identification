@@ -4,7 +4,7 @@ The trained model uses the Logistic Classifier that performed the best according
 - The user clicks predict.
 - The predicted class (B)enign or (M)alignant, class probabilty and how it relates to the trained model predictions on the PCA1 and PCA2 is displayed.
 - The PCA plot gives great insight how the newly classified datapoint relates and if it is close to the incorrectly predicted ones or where the two classes are difficult to distinguish extra care can be taken.
-![docker-api front-end](/docs/docker_api.png)
+![docker-api front-end](/docs/deploy_model_docker_api.png)
 
 # Pull the pre-build image for [Docker Hub](https://hub.docker.com/repository/docker/deusnexus/breast_cancer_classification/general)
 ### Pull the latest build image
