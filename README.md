@@ -18,7 +18,7 @@ A group of oncologists have seen impressive breast cancer identification results
 The project will be organized using the CRISP-DM (Cross-Industry Standard Process for Data Mining) method. This method provides a structured approach to organizing and executing data science projects. The proposed Git repository structure is as follows:
 
 - **data/original_data**: This folder will contain the dataset and any additional data files.
-  - `data.csv`: File with a list of IDs, labels, and features for breast cancer classification.
+  - `dataset.csv`: File with a list of IDs, labels, and features for breast cancer classification.
   - `Addition_Information_Case_Study_Task_1.pdf`: File will information about the `dataset.csv` (columns, attributes, further info)
 - **data/processed_data**:
   - Data that is processed is stored in central database MongoDB under the `processed_data` collection along with metadata for versioning and how the data has been processed.
@@ -54,13 +54,10 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
     - `main.py`: File used by FastAPI
     - `requirements.txt`: Python module requirements to be installed in the Docker image.
     - `train_logistic_reg_best_model_2024-02-29.joblib`: Saved LogisticRegression model that is loaded in the Docker image for predictions.
-    - `README.md`: Additional information on Docker Image - Use, Building, etc. #############################################################################(TO BE UPDATED)
-
+    - `README.md`: Additional information on Docker Image - Use, Building, etc.
 - `.gitignore`: File to ignore github uploads of venv, venv-docker, __pycache__
 - `LICENSE`: License file
 - `requirements.txt`: Requirements file to run the notebooks.
-
-
 
 
 #### NOT USED!^$&*$
