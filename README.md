@@ -66,7 +66,7 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 `requirements.txt`: Requirements file to run the notebooks.
 
 # Dataset Quality Evaluation
-**Exploratory Data Analysis (EDA)**: Conduct a thorough exploration of the dataset, examining statistical summaries, distributions, and relationships between variables.
+A thorough exploration of the dataset using Exploratory Data Analysis (EDA), examining statistical summaries, distributions, and relationships between variables.
 
 **Diagnosis Distribution**
 
@@ -111,11 +111,6 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 **PCA Clusters**
 
 <img src="docs/eda_pca_clusters.png" alt="PCA Clusters" width="500">
-
-
-**Data Cleaning**: Check for missing values, outliers, and inconsistencies.
-
-**Visualizations**: Create visualizations to effectively communicate key relationships and patterns within the data, ensuring business partners can understand important aspects easily.
 
 
 # Candidate Models
