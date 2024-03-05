@@ -115,15 +115,38 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 **PCA Predict Correct-Incorrect**
 
 <img src="/docs/evaluate_best_model_logistic_PCA_predictions_correct_incorrect.jpg" alt="Evaluate PCA predict correct incorrect" width="500">
+The PCA scatter plot reveals the performance of a logistic regression model used for breast cancer classification. The plot visualizes data reduced to two principal components (PC1 and PC2) and color-codes points based on the model's accuracy in predicting benign and malignant cases.
+
+Observations from the plot indicate:
+- True Positives (TP): Correct predictions of malignant cases (light blue dots).
+- True Negatives (TN): Correct predictions of benign cases (orange dots).
+- False Negatives (FN): Malignant cases incorrectly predicted as benign (black crosses).
+- False Positives (FP): Benign cases incorrectly predicted as malignant (black 'X's).
+
+The PCA plot showcases regions where the model has difficulty distinguishing between classes, especially where false negatives and positives cluster around the decision boundary. These areas point to potential improvements in the model's ability to differentiate between tumor types. Specifically, false negatives are critical in medical diagnostics as they represent missed diagnoses of malignant tumors.
+
+PCA helps by transforming complex data into a simpler form for visual inspection and revealing decision boundaries. The errors visualized suggest that enhanced feature engineering or advanced modeling techniques might improve discrimination power. Further investigation could also include in-depth data quality assessment and integrating domain expertise into feature selection and model refinement.
+
+For improvements, one could consider:
+- Developing new or modified features that could help reduce overlap between classes.
+- Increasing model complexity, perhaps exploring nonlinear classifiers that might better capture the boundary between classes.
+- Reinforcing data preprocessing to minimize noise impact and reviewing outlier management strategies.
+- Engaging with medical professionals to understand misclassifications and refine the model accordingly.
 
 **ROC Curve**
 
 <img src="/docs/evaluate_best_model_logistic_roc_curve.jpg" alt="Evaluate ROC Curve" width="500">
+The Receiver Operating Characteristic (ROC) curve presented in the image is a tool used to assess the performance of classification models. It plots the True Positive Rate (TPR) against the False Positive Rate (FPR) at various threshold levels. An Area Under the Curve (AUC) value of 1.00, as shown, suggests a model that perfectly distinguishes between the positive (malignant tumors) and negative (benign tumors) classes.
 
+However, an AUC of 1.00 in practical scenarios often raises questions about overfitting, data quality, or evaluation methodology, as it is highly uncommon to achieve perfect classification. A model without any visible false positives or false negatives, as implied by this ROC curve, would typically be met with skepticism, particularly in complex fields such as medical diagnostics.
 
-- Identify common types of errors made by the model (e.g., false positives, false negatives).
-- Analyze specific instances where the model failed to make accurate predictions.
-- Provide insights into potential improvements or areas for further investigation.
+The ROC AUC metric is valuable for summarizing a model's predictive accuracy, encapsulating the trade-off between sensitivity (TPR) and specificity (1-FPR). An ideal ROC curve would show a steep ascent towards the top-left corner of the plot, indicating high sensitivity and specificity. Nevertheless, the perfect score depicted here necessitates a thorough review of the data and model evaluation procedures to validate the integrity of these findings.
+
+For future improvement, it is recommended to:
+- Conduct a rigorous cross-validation process to detect any data leakage.
+- Re-examine the dataset for potential biases or class imbalance.
+- Validate the model against an independent dataset to confirm generalizability.
+- Consider the possibility of overfitting and evaluate the model complexity to ensure it is appropriate for the data's inherent complexity.
 
 # Making the Model Accessible for Operations
 `Propose how the developed model can be integrated into daily work:`
