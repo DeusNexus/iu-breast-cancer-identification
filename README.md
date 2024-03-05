@@ -113,7 +113,9 @@ The confusion matrix visualizes the classification accuracy of a model, indicati
 - 207 True Positives: Malignant tumors correctly identified.
 - 3 False Positives: Benign tumors incorrectly labeled as malignant.
 - 5 False Negatives: Malignant tumors missed, incorrectly labeled as benign.
+
 The matrix reveals that while the model is largely accurate, it errs slightly more towards false negatives than false positives, a significant concern in cancer diagnosis due to the potential for delayed treatment.
+
 To improve, scrutinizing features leading to false negatives and adjusting the classification threshold could be key steps. The confusion matrix serves as a diagnostic tool, clarifying where the model succeeds and where it needs refinement, guiding enhancements to increase its diagnostic precision.
 
 **Feature Importance Rank**
@@ -122,9 +124,11 @@ To improve, scrutinizing features leading to false negatives and adjusting the c
 The bar chart represents feature importance in a logistic regression model for breast cancer prediction. Positive standardized coefficients suggest a feature increases the likelihood of a malignant classification, whereas negative values imply an association with benign predictions. The chart itself doesn't indicate prediction errors but highlights features' relative importance.
 
 Key positively influential features, such as 'texture_worst' and 'radius_se', suggest a strong link with malignant cases. Conversely, features with significant negative coefficients likely indicate benign outcomes. Analyzing misclassifications in light of these importance rankings can uncover potential data quality issues or suggest areas for model improvement, such as:
+
 - Examining high-importance features for their role in misclassified predictions to refine feature selection or data collection.
 - Considering the elimination of features with minimal impact to streamline the model.
 - Investigating the clinical implications of influential features in collaboration with medical experts to ensure the model's practical applicability.
+
 Ultimately, while feature importance provides a roadmap for which variables most affect the model's decisions, understanding their impact on the model's accuracy and integrating clinical expertise are crucial for enhancing the model's diagnostic utility.
 
 **PCA Predict Correct-Incorrect**
@@ -133,15 +137,18 @@ Ultimately, while feature importance provides a roadmap for which variables most
 The PCA scatter plot reveals the performance of a logistic regression model used for breast cancer classification. The plot visualizes data reduced to two principal components (PC1 and PC2) and color-codes points based on the model's accuracy in predicting benign and malignant cases.
 
 Observations from the plot indicate:
+
 - True Positives (TP): Correct predictions of malignant cases (light blue dots).
 - True Negatives (TN): Correct predictions of benign cases (orange dots).
 - False Negatives (FN): Malignant cases incorrectly predicted as benign (black crosses).
 - False Positives (FP): Benign cases incorrectly predicted as malignant (black 'X's).
+
 The PCA plot showcases regions where the model has difficulty distinguishing between classes, especially where false negatives and positives cluster around the decision boundary. These areas point to potential improvements in the model's ability to differentiate between tumor types. Specifically, false negatives are critical in medical diagnostics as they represent missed diagnoses of malignant tumors.
 
 PCA helps by transforming complex data into a simpler form for visual inspection and revealing decision boundaries. The errors visualized suggest that enhanced feature engineering or advanced modeling techniques might improve discrimination power. Further investigation could also include in-depth data quality assessment and integrating domain expertise into feature selection and model refinement.
 
 For improvements, one could consider:
+
 - Developing new or modified features that could help reduce overlap between classes.
 - Increasing model complexity, perhaps exploring nonlinear classifiers that might better capture the boundary between classes.
 - Reinforcing data preprocessing to minimize noise impact and reviewing outlier management strategies.
@@ -157,6 +164,7 @@ However, an AUC of 1.00 in practical scenarios often raises questions about over
 The ROC AUC metric is valuable for summarizing a model's predictive accuracy, encapsulating the trade-off between sensitivity (TPR) and specificity (1-FPR). An ideal ROC curve would show a steep ascent towards the top-left corner of the plot, indicating high sensitivity and specificity. Nevertheless, the perfect score depicted here necessitates a thorough review of the data and model evaluation procedures to validate the integrity of these findings.
 
 For future improvement, it is recommended to:
+
 - Conduct a rigorous cross-validation process to detect any data leakage.
 - Re-examine the dataset for potential biases or class imbalance.
 - Validate the model against an independent dataset to confirm generalizability.
@@ -172,6 +180,7 @@ For future improvement, it is recommended to:
 ## Front-end of Docker API
 ### See more information in [source/model_deployment/README.md](./source/model_deployment/README.md)
 The trained model uses the Logistic Classifier that performed the best according to all the collected metrics and results.
+
 - The user can select one of the example data to be predicted by the model or fill out their own numeric data.
 - The user clicks predict.
 - The predicted class (B)enign or (M)alignant, class probabilty and how it relates to the trained model predictions on the PCA1 and PCA2 is displayed.
