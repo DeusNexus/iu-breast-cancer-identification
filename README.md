@@ -15,7 +15,7 @@ A group of oncologists have seen impressive breast cancer identification results
 # Project Organization
 `Organize the project using the CRISP-DM. Make a proposal on how to build the folder structure of a Git repository for the project.`
 
-![Git Project Structure](/docs/model_engineer_folder_structure.png)
+![Git Project Structure](/docs/model_engineer_folder_structure.png = 780x)
 
 The project will be organized using the CRISP-DM (Cross-Industry Standard Process for Data Mining) method. This method provides a structured approach to organizing and executing data science projects. The proposed Git repository structure is as follows:
 
