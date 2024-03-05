@@ -15,6 +15,8 @@ A group of oncologists have seen impressive breast cancer identification results
 # Project Organization
 `Organize the project using the CRISP-DM. Make a proposal on how to build the folder structure of a Git repository for the project.`
 
+![Git Project Structure](/docs/model_engineer_folder_structure.png)
+
 The project will be organized using the CRISP-DM (Cross-Industry Standard Process for Data Mining) method. This method provides a structured approach to organizing and executing data science projects. The proposed Git repository structure is as follows:
 
 - **data/original_data**: This folder will contain the dataset and any additional data files.
@@ -60,20 +62,11 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 - `requirements.txt`: Requirements file to run the notebooks.
 
 
-#### NOT USED!^$&*$
-  - `2_data_preprocessing.ipynb`: Notebook for data cleaning and feature engineering.
-  - `5_interpretability_analysis.ipynb`: Notebook focusing on interpretability aspects.
-- **visualizations**: This folder will contain visualizations generated during data exploration and model evaluation.
-  - `feature_importance.png`: Visualization of feature importance.
-  - `error_analysis.png`: Visualization of detailed error analysis.
-
-
-
-
-
-###
-*** At the end of each step of this use case, critically assess whether all necessary operations have been conducted and provide justifications for the decisions made during the process. ***
-###
+##################
+##################
+*** At the# end of each step of this use case, critically assess whether all necessary operations have been conducted and provide justifications for the decisions made during the process. ***
+##################
+##################
 
 # Dataset Quality Evaluation
 `Assess the quality of the provided dataset by performing the following tasks:`
@@ -108,6 +101,11 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 
 ## Detailed Error Analysis
 `Perform a detailed error analysis to understand the weaknesses of the approach:`
+![Evaluate Confusion matrix](/docs/evaluate_best_model_logistic_confusion_matrix.jpg)
+![Evaluate Feature importance rank](/docs/evaluate_best_model_logistic_feature_importance_rank.jpg)
+![Evaluate PCA predict correct incorrect](/docs/evaluate_best_model_logistic_PCA_predictions_correct_incorrect.jpg)
+![Evaluate ROC Curve](/docs/evaluate_best_model_logistic_roc_curve.jpg)
+
 
 - Identify common types of errors made by the model (e.g., false positives, false negatives).
 - Analyze specific instances where the model failed to make accurate predictions.
