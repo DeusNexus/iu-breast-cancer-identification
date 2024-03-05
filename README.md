@@ -16,6 +16,7 @@ A group of oncologists have seen impressive breast cancer identification results
 `Organize the project using the CRISP-DM. Make a proposal on how to build the folder structure of a Git repository for the project.`
 
 **Git Project Structure**
+
 <img src="/docs/model_engineer_folder_structure.png" alt="Git Project Structure" width="750">
 
 The project will be organized using the CRISP-DM (Cross-Industry Standard Process for Data Mining) method. This method provides a structured approach to organizing and executing data science projects. The proposed Git repository structure is as follows:
@@ -104,15 +105,19 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 `Perform a detailed error analysis to understand the weaknesses of the approach:`
 
 **Confusion Matrix**
+
 <img src="/docs/evaluate_best_model_logistic_confusion_matrix.jpg" alt="Evaluate Confusion matrix" width="500">
 
 **Feature Importance Rank**
+
 <img src="/docs/evaluate_best_model_logistic_feature_importance_rank.jpg" alt="Evaluate Feature importance rank" width="500">
 
 **PCA Predict Correct-Incorrect**
+
 <img src="/docs/evaluate_best_model_logistic_PCA_predictions_correct_incorrect.jpg" alt="Evaluate PCA predict correct incorrect" width="500">
 
 **ROC Curve**
+
 <img src="/docs/evaluate_best_model_logistic_roc_curve.jpg" alt="Evaluate ROC Curve" width="500">
 
 
@@ -136,6 +141,7 @@ The trained model uses the Logistic Classifier that performed the best according
 - The PCA plot gives great insight how the newly classified datapoint relates and if it is close to the incorrectly predicted ones or where the two classes are difficult to distinguish extra care can be taken.
 
 **Docker-api Front-end**
+
 <img src="/docs/deploy_model_docker_api.png" alt="Deploy Docker-api front-end" width="750">
 
 ## How to get started
