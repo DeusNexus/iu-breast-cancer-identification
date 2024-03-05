@@ -287,10 +287,16 @@ Install the dependencies
 `http://127.0.0.1:8000`
 
 # Reflection
-...
+Working on this project has learned me more about the importance of interpretability, especialy in context of healthcare.
+For this reason I had to become familiar with what interpretable means and how to convey the meaning to stakeholders or doctors.
+Using metrics like feature importance, classification reports and matrixes it is possible to explain how the model works and also what confidence we can have in it. The creation of a front-end that utilizes inputs and shows a PCA with the new data point was an insightful way to allow doctors to see how new data relates to the trained / predicted dataset and where the potential areas of careful diagnosis are required.
 
 # Conclusion
-...
+This case study has successfully demonstrated the development of an interpretable machine learning model for the critical task of breast cancer prediction. The Logistic Regression model, selected for its balance of high accuracy and interpretability, offers clinicians a reliable and understandable tool, advancing the potential of AI in medical diagnostics. Our project, aligned with the CRISP-DM methodology, not only focused on achieving an F1 score exceeding the threshold for high performance but also emphasized creating a model whose decisions are as transparent as they are accurate.
+
+The integration of a user-friendly dockerized API into clinical practice represents a significant leap forward in the practical application of machine learning in healthcare. It enables clinicians to leverage the model's insights directly, with the PCA plots providing a deeper understanding of the model's predictions and their reliability. The UI's design ensures that medical professionals can intuitively interact with the model, making this advanced technology an accessible enhancement to their diagnostic toolkit.
+
+In conclusion, this project underscores the feasibility and necessity of marrying technical innovation with user-centric design in healthcare. By prioritizing interpretability and user experience alongside technical rigor, the model stands as a testament to the value of machine learning in supporting and enhancing clinical decision-making processes. The transparent, accessible, and highly accurate nature of this model marks a significant stride towards the broader adoption and trust in AI technologies within the medical field.
 
 # Disclaimer
 The developed application is licensed under the GNU General Public License.
