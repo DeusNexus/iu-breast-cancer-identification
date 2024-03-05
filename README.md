@@ -144,10 +144,7 @@ Interpretability in machine learning refers to the ease with which a human can u
 In summary, the interpretability rating guides users on how approachable a model's decisions are for analysis and understanding, with 'best' being most transparent and 'worst' being least.
 
 ## Importance of Explanatory Variables
-`Discuss the importance of each explanatory variable:`
-
-- Conduct feature importance analysis to identify variables contributing significantly to model predictions.
-- Clearly communicate the relevance of each variable in the context of breast cancer prediction.
+Ranked by Standardized Coefficient (high to low means importance)
 
 | Feature                   | Standardized Coefficient | CI Lower (Standardized) | CI Upper (Standardized) | Original Scale Coefficient | CI Lower (Original Scale) | CI Upper (Original Scale) |
 |---------------------------|--------------------------|-------------------------|-------------------------|----------------------------|---------------------------|---------------------------|
