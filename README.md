@@ -10,11 +10,9 @@ According to the breast cancer is one of the most common cancer types overall. D
 A group of oncologists have seen impressive breast cancer identification results from an AI algorithm on a fair. However, the group did not understand why the model predicted certain tumors as malign and others as benign - the validity of the model was questioned in some cases. The group also discussed the most important features for the predictions. Finally, they decided to ask a group of data scientists, you are one of them, for possibilities to understand the prediction of a possible machine learning model. Your task is to develop a classification model that predicts a tumor to be malignant or benign with high accuracy (F1 score > 0.95). Moreover, the model should be interpretable. The outcomes should be presented/communicated to non-experts to convince them about the trustworthiness of the chosen approach.
 
 ### Task
-`Support a group of oncologists with the interpretable prediction model to allow for additional indications that can be produced automatically as well as support understanding to ease technology acceptance.`
+Support a group of oncologists with the interpretable prediction model to allow for additional indications that can be produced automatically as well as support understanding to ease technology acceptance.
 
 # Project Organization
-`Organize the project using the CRISP-DM. Make a proposal on how to build the folder structure of a Git repository for the project.`
-
 **Git Project Structure**
 
 <img src="/docs/model_engineer_folder_structure.png" alt="Git Project Structure" width="750">
@@ -25,7 +23,7 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 - `dataset.csv`: File with a list of IDs, labels, and features for breast cancer classification.
 - `Addition_Information_Case_Study_Task_1.pdf`: File will information about the `dataset.csv` (columns, attributes, further info)
 
-**data/processed_data**:
+**data/processed_data**: Act as staging area.
 - Data that is processed is stored in central database MongoDB under the `processed_data` collection along with metadata for versioning and how the data has been processed.
 - This folder is purely for staging and should not really be used to store data. For sake of simplicity data in the notebooks is not loaded from the database but the general concept and metadata is still explained and given.
 
@@ -66,13 +64,6 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 `LICENSE`: License file
 
 `requirements.txt`: Requirements file to run the notebooks.
-
-
-##################
-##################
-*** At the# end of each step of this use case, critically assess whether all necessary operations have been conducted and provide justifications for the decisions made during the process. ***
-##################
-##################
 
 # Dataset Quality Evaluation
 `Assess the quality of the provided dataset by performing the following tasks:`
