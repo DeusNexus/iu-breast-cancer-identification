@@ -21,47 +21,47 @@ A group of oncologists have seen impressive breast cancer identification results
 
 The project will be organized using the CRISP-DM (Cross-Industry Standard Process for Data Mining) method. This method provides a structured approach to organizing and executing data science projects. The proposed Git repository structure is as follows:
 
-- **data/original_data**: This folder will contain the dataset and any additional data files.
+**data/original_data**: This folder will contain the dataset and any additional data files.
   - `dataset.csv`: File with a list of IDs, labels, and features for breast cancer classification.
   - `Addition_Information_Case_Study_Task_1.pdf`: File will information about the `dataset.csv` (columns, attributes, further info)
-- **data/processed_data**:
+**data/processed_data**:
   - Data that is processed is stored in central database MongoDB under the `processed_data` collection along with metadata for versioning and how the data has been processed.
   - This folder is purely for staging and should not really be used to store data. For sake of simplicity data in the notebooks is not loaded from the database but the general concept and metadata is still explained and given.
 
-- **docs**: Documentation related to the projec including the necessary created documents and media created during the training, evaluation, deployment and additional for clarifying the process.
+**docs**: Documentation related to the projec including the necessary created documents and media created during the training, evaluation, deployment and additional for clarifying the process.
   - `README.md`: Main project documentation.
   - `project_report.pdf`: Final project report summarizing findings and decisions.
   - `media`: Images
 
-- **notebooks**: This folder will include Jupyter notebooks used for data exploration.
+**notebooks**: This folder will include Jupyter notebooks used for data exploration.
   - `exploratory_data_analysis.ipynb`: Notebook for exploring the dataset.
 
-- **scripts**: Any supporting scripts used in the project to processed data or interact with database.
+**scripts**: Any supporting scripts used in the project to processed data or interact with database.
   - `database.py`: Contains all methods to connect and insert original or processed data to the MongoDB database collections `original_data` and `processed_data`.
   - `write_original_data.py`: Python script commiting the original data to the database with metadata enrichment for data versioning.
   - `write_processed_data.py`: Python script for commiting processed data to the database with metadata and include the data processing steps.
   - `README.md`: For for clarification.
 
-- **source**: Contains the model_training, model_evaluation and model_deployment steps of CRISP-DM.
-  - **source/model_training**:
-    - `model_training.ipynb`: Notebook for training different candidate models.
-    - `train_logistic_reg_best_model_2024-02-29.joblib`: Trained model using LogisticRegression model from scikit-learn.
-    - `train_model_best_cv_nsplit_accuracy.csv`: Training artifact to see best cross-validation splits using accuracy metric.
-    - `train_model_result_metrics.csv`: All trained models with their individual performances and their interpretability:
-      - Model, Interpretability, F1 Score, ROC AUC, Recall, Precision, Accuracy (Testing), Accuracy (Training)
-  - **source/model_evaluation**:
-    - `model_evaluation.ipynb`: Notebook for evaluating model performance.
-    - `evaluate_best_model_feature_importance_standardized_vs_regular_ci.csv`: Evaluation artifact containing the most important features, their ci error interval, standardized and non-standardized values.
-  - **source/model_deployment**: Folder for model deployment, including `Dockerfile` for building an image.
-    - `/html`: Folder with front-end index.html file and css.
-    - `dataset.csv`: Used by the Dockerfile make the current dataset available (used for predictions, PCA1 & PCA2 mappings)
-    - `main.py`: File used by FastAPI
-    - `requirements.txt`: Python module requirements to be installed in the Docker image.
-    - `train_logistic_reg_best_model_2024-02-29.joblib`: Saved LogisticRegression model that is loaded in the Docker image for predictions.
-    - `README.md`: Additional information on Docker Image - Use, Building, etc.
-- `.gitignore`: File to ignore github uploads of venv, venv-docker, __pycache__
-- `LICENSE`: License file
-- `requirements.txt`: Requirements file to run the notebooks.
+**source**: Contains the model_training, model_evaluation and model_deployment steps of CRISP-DM.
+- **source/model_training**:
+  - `model_training.ipynb`: Notebook for training different candidate models.
+  - `train_logistic_reg_best_model_2024-02-29.joblib`: Trained model using LogisticRegression model from scikit-learn.
+  - `train_model_best_cv_nsplit_accuracy.csv`: Training artifact to see best cross-validation splits using accuracy metric.
+  - `train_model_result_metrics.csv`: All trained models with their individual performances and their interpretability:
+    - Model, Interpretability, F1 Score, ROC AUC, Recall, Precision, Accuracy (Testing), Accuracy (Training)
+- **source/model_evaluation**:
+  - `model_evaluation.ipynb`: Notebook for evaluating model performance.
+  - `evaluate_best_model_feature_importance_standardized_vs_regular_ci.csv`: Evaluation artifact containing the most important features, their ci error interval, standardized and non-standardized values.
+- **source/model_deployment**: Folder for model deployment, including `Dockerfile` for building an image.
+  - `/html`: Folder with front-end index.html file and css.
+  - `dataset.csv`: Used by the Dockerfile make the current dataset available (used for predictions, PCA1 & PCA2 mappings)
+  - `main.py`: File used by FastAPI
+  - `requirements.txt`: Python module requirements to be installed in the Docker image.
+  - `train_logistic_reg_best_model_2024-02-29.joblib`: Saved LogisticRegression model that is loaded in the Docker image for predictions.
+  - `README.md`: Additional information on Docker Image - Use, Building, etc.
+`.gitignore`: File to ignore github uploads of venv, venv-docker, __pycache__
+`LICENSE`: License file
+`requirements.txt`: Requirements file to run the notebooks.
 
 
 ##################
@@ -189,6 +189,9 @@ The trained model uses the Logistic Classifier that performed the best according
 **Docker-api Front-end**
 
 <img src="/docs/deploy_model_docker_api.png" alt="Deploy Docker-api front-end" width="750">
+The user interface (UI) showcased is designed for clinicians to apply a logistic classifier for breast cancer detection. Through the UI, medical professionals can swiftly input patient data or choose preset examples, receive instant model predictions (benign or malignant), and view probability scores. The integrated PCA plot visualizes where the new data point falls relative to the model’s training, highlighting the certainty of the prediction and areas where the model may be less reliable.
+
+Incorporating this tool into daily medical practice involves training staff to use the UI and interpret PCA outputs, embedding the system into existing health record software for ease of access, and using the model's insights to augment clinical decision-making. Essential to adoption are clear explanations of model terms and predictions, a feedback feature for continuous model enhancement, and alerts for ambiguous cases. This setup not only improves diagnostic workflows but also builds trust in AI-assisted decision-making.
 
 ## How to get started
 ### Dependencies for using the Jupyter Notebooks
