@@ -108,6 +108,7 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 
 <img src="/docs/evaluate_best_model_logistic_confusion_matrix.jpg" alt="Evaluate Confusion matrix" width="500">
 The confusion matrix visualizes the classification accuracy of a model, indicating correct and incorrect predictions for benign and malignant tumors:
+
 - 354 True Negatives: Benign tumors correctly identified.
 - 207 True Positives: Malignant tumors correctly identified.
 - 3 False Positives: Benign tumors incorrectly labeled as malignant.
