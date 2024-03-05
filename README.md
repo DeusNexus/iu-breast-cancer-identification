@@ -75,13 +75,15 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 - **Visualizations**: Create visualizations to effectively communicate key relationships and patterns within the data, ensuring business partners can understand important aspects easily.
 
 # Candidate Models
-`Establish a collection of candidate models considering the task requirements. Focus on increasing complexity gradually while prioritizing interpretability. Key steps include:`
+**Train Model Accuracies**
+<img src="/docs/train_model_accuracies_cv_nsplit.jpg" alt="Train Model Accuracies" width="500">
 
-- **Model Training**: Train multiple models with varying complexities (e.g., logistic regression, decision trees, ensemble methods). Document the training process and hyperparameter choices.
+**Comparison ROC AUC Scores**
+<img src="/docs/train_model_metrics_comparison_roc_auc_scores.jpg" alt="Comparison ROC AUC Scores" width="500">
 
-- **Model Evaluations**: Evaluate the performance of each model using appropriate metrics, ensuring high accuracy (F1 score > 0.95). Provide detailed explanations of the evaluation results.
+**Interpretability Rating**
+<img src="/docs/train_model_comparison_with_interpretability.jpg" alt="Interpretability Rating" width="500">
 
-- **Best Model**: Select the best-performing model based on the evaluation metrics and feature importance analysis.
 
 ## Interpretability
 `Ensure the developed model is interpretable:`
