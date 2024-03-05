@@ -97,8 +97,6 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 - Clearly communicate the relevance of each variable in the context of breast cancer prediction.
 
 ## Detailed Error Analysis
-`Perform a detailed error analysis to understand the weaknesses of the approach:`
-
 **Confusion Matrix**
 
 <img src="/docs/evaluate_best_model_logistic_confusion_matrix.jpg" alt="Evaluate Confusion matrix" width="500">
