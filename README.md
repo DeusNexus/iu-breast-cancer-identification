@@ -144,7 +144,7 @@ Interpretability in machine learning refers to the ease with which a human can u
 In summary, the interpretability rating guides users on how approachable a model's decisions are for analysis and understanding, with 'best' being most transparent and 'worst' being least.
 
 ## Importance of Explanatory Variables
-Ranked by Standardized Coefficient (high to low means importance)
+Ranked by Standardized Coefficient (high to low means importance). `texture_worst` has highest contribution to the prediction and `compactness_worst` the least.
 
 | Feature                   | Standardized Coefficient | CI Lower (Standardized) | CI Upper (Standardized) | Original Scale Coefficient | CI Lower (Original Scale) | CI Upper (Original Scale) |
 |---------------------------|--------------------------|-------------------------|-------------------------|----------------------------|---------------------------|---------------------------|
