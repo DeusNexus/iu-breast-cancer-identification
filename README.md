@@ -66,13 +66,11 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 `requirements.txt`: Requirements file to run the notebooks.
 
 # Dataset Quality Evaluation
-`Assess the quality of the provided dataset by performing the following tasks:`
+**Exploratory Data Analysis (EDA)**: Conduct a thorough exploration of the dataset, examining statistical summaries, distributions, and relationships between variables.
 
-- **Exploratory Data Analysis (EDA)**: Conduct a thorough exploration of the dataset, examining statistical summaries, distributions, and relationships between variables.
+**Data Cleaning**: Check for missing values, outliers, and inconsistencies.
 
-- **Data Cleaning**: Check for missing values, outliers, and inconsistencies. Clearly document any data cleaning steps taken.
-
-- **Visualizations**: Create visualizations to effectively communicate key relationships and patterns within the data, ensuring business partners can understand important aspects easily.
+**Visualizations**: Create visualizations to effectively communicate key relationships and patterns within the data, ensuring business partners can understand important aspects easily.
 
 # Candidate Models
 **Interpretability Rating**
@@ -90,11 +88,20 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 
 
 ## Interpretability
-`Ensure the developed model is interpretable:`
+To ensure the developed model is interpretable a rating has been established.
+Interpretability in machine learning refers to the ease with which a human can understand the reasons behind a model's decision. Here’s what the interpretability ratings mean for the various models:
 
-- Utilize models with inherent interpretability, such as decision trees or linear models.
-- Provide clear explanations of the model's decision-making process.
-- Use visualizations to illustrate important aspects of the model's behavior.
+- Best: These models are typically transparent with outcomes that are easily traceable to specific model inputs. Models like Logistic Regression, Ridge Classifier, and Decision Tree allow users to see the direct relationship between feature changes and prediction outcomes. Their decisions can often be expressed in a simple, logical format that's comprehensible even without extensive statistical or machine learning background.
+
+- High: High interpretability models like AdaBoostClassifier still provide a clear understanding of how input features affect predictions, but they might combine multiple weak learners. While each individual decision tree in the AdaBoost algorithm is interpretable, the ensemble method that combines these trees is slightly less so because it aggregates many models’ decisions.
+
+- Medium: Models such as RandomForest or GradientBoostingClassifier offer moderate interpretability. They consist of an ensemble of decision trees, which individually are interpretable but when combined, the ensemble's decision process becomes more opaque due to the complexity of multiple trees voting.
+
+- Low: Models like GaussianProcessClassifier or KNeighborsClassifier have lower interpretability because their decision-making processes are more complex and harder to trace back to individual features. For instance, KNeighborsClassifier makes predictions based on the proximity to other data points, which doesn’t provide a clear rule-based decision path.
+
+- Worst: Models such as PassiveAggressiveClassifier or SGDClassifier fall into the 'worst' category for interpretability. These models, especially when using non-linear transformations, make it very difficult to understand how input data is being transformed into predictions, often acting as "black boxes" where the internal workings are not visible or comprehensible to users.
+
+In summary, the interpretability rating guides users on how approachable a model's decisions are for analysis and understanding, with 'best' being most transparent and 'worst' being least.
 
 ## Importance of Explanatory Variables
 `Discuss the importance of each explanatory variable:`
