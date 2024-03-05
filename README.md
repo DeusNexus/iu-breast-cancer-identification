@@ -149,25 +149,24 @@ In summary, the interpretability rating guides users on how approachable a model
 - Conduct feature importance analysis to identify variables contributing significantly to model predictions.
 - Clearly communicate the relevance of each variable in the context of breast cancer prediction.
 
-```markdown
-| Feature               | Standardized Coefficient | CI Lower (Standardized) | CI Upper (Standardized) | Original Scale Coefficient | CI Lower (Original Scale) | CI Upper (Original Scale) |
-|-----------------------|--------------------------|-------------------------|-------------------------|----------------------------|---------------------------|---------------------------|
-| texture_worst         | 1.24                     | 1.24                    | 1.24                    | 0.20                       | 0.20                      | 0.21                      |
-| radius_se             | 1.17                     | 1.04                    | 1.30                    | 4.14                       | 3.66                      | 4.61                      |
-| symmetry_worst        | 1.14                     | 0.93                    | 1.35                    | 18.11                      | 14.76                     | 21.46                     |
-| concave points_mean   | 0.97                     | 0.07                    | 1.87                    | 25.52                      | 1.78                      | 49.26                     |
-| concavity_worst       | 0.89                     | 0.78                    | 1.00                    | 4.25                       | 3.71                      | 4.80                      |
-| radius_worst          | 0.86                     | 0.83                    | 0.88                    | 0.18                       | 0.17                      | 0.18                      |
-| area_se               | 0.84                     | 0.84                    | 0.84                    | 0.02                       | 0.02                      | 0.02                      |
-| area_worst            | 0.82                     | 0.82                    | 0.82                    | 0.00                       | 0.00                      | 0.00                      |
-| concave points_worst  | 0.80                     | 0.39                    | 1.21                    | 12.25                      | 5.96                      | 18.53                     |
-| concavity_mean        | 0.75                     | 0.30                    | 1.21                    | 9.50                       | 3.77                      | 15.23                     |
-| compactness_se        | -0.74                    | -1.63                   | 0.16                    | -39.58                     | -87.94                    | 8.79                      |
-| perimeter_se          | 0.67                     | 0.65                    | 0.68                    | 0.32                       | 0.31                      | 0.33                      |
-| perimeter_worst       | 0.64                     | 0.64                    | 0.64                    | 0.02                       | 0.02                      | 0.02                      |
-| smoothness_worst      | 0.62                     | 0.01                    | 1.23                    | 26.84                      | 0.33                      | 53.35                     |
-| fractal_dimension_se  | -0.59                    | -5.44                   | 4.25                    | -213.70                    | -1,953.39                 | 1,525.99                  |
-| area_mean             | 0.49                     | 0.49                    | 0.49                    | 0.00                      
+| Feature                   | Standardized Coefficient | CI Lower (Standardized) | CI Upper (Standardized) | Original Scale Coefficient | CI Lower (Original Scale) | CI Upper (Original Scale) |
+|---------------------------|--------------------------|-------------------------|-------------------------|----------------------------|---------------------------|---------------------------|
+| texture_worst             | 1.24                     | 1.24                    | 1.24                    | 0.20                       | 0.20                      | 0.21                      |
+| radius_se                 | 1.17                     | 1.04                    | 1.30                    | 4.14                       | 3.66                      | 4.61                      |
+| symmetry_worst            | 1.14                     | 0.93                    | 1.35                    | 18.11                      | 14.76                     | 21.46                     |
+| concave points_mean       | 0.97                     | 0.07                    | 1.87                    | 25.52                      | 1.78                      | 49.26                     |
+| concavity_worst           | 0.89                     | 0.78                    | 1.00                    | 4.25                       | 3.71                      | 4.80                      |
+| radius_worst              | 0.86                     | 0.83                    | 0.88                    | 0.18                       | 0.17                      | 0.18                      |
+| area_se                   | 0.84                     | 0.84                    | 0.84                    | 0.02                       | 0.02                      | 0.02                      |
+| area_worst                | 0.82                     | 0.82                    | 0.82                    | 0.00                       | 0.00                      | 0.00                      |
+| concave points_worst      | 0.80                     | 0.39                    | 1.21                    | 12.25                      | 5.96                      | 18.53                     |
+| concavity_mean            | 0.75                     | 0.30                    | 1.21                    | 9.50                       | 3.77                      | 15.23                     |
+| compactness_se            | -0.74                    | -1.63                   | 0.16                    | -39.58                     | -87.94                    | 8.79                      |
+| perimeter_se              | 0.67                     | 0.65                    | 0.68                    | 0.32                       | 0.31                      | 0.33                      |
+| perimeter_worst           | 0.64                     | 0.64                    | 0.64                    | 0.02                       | 0.02                      | 0.02                      |
+| smoothness_worst          | 0.62                     | 0.01                    | 1.23                    | 26.84                      | 0.33                      | 53.35                     |
+| fractal_dimension_se      | -0.59                    | -5.44                   | 4.25                    | -213.70                    | -1,953.39                 | 1,525.99                  |
+| area_mean                 | 0.49                     | 0.49                    | 0.49                    | 0.00                       | 0.00                      | 0.00                      |
 | Intercept                 | -0.49                    | -30.83                  | -30.68                  | -30.76                     | -30.78                    | -30.73                    |
 | texture_mean              | 0.48                     | 0.47                    | 0.48                    | 0.11                       | 0.11                      | 0.11                      |
 | symmetry_se               | -0.46                    | -1.67                   | 0.76                    | -55.75                     | -204.65                   | 93.15                     |
@@ -183,7 +182,7 @@ In summary, the interpretability rating guides users on how approachable a model
 | smoothness_mean           | 0.10                     | -0.77                   | 0.97                    | 7.24                       | -55.54                    | 70.02                     |
 | concavity_se              | -0.08                    | -0.63                   | 0.46                    | -2.63                      | -19.73                    | 14.47                     |
 | compactness_worst         | 0.02                     | -0.15                   | 0.19                    | 0.13                       | -0.95                     | 1.22                      |
-
+|---------------------------|--------------------------|-------------------------|-------------------------|----------------------------|---------------------------|---------------------------|
 
 
 ## Detailed Error Analysis
