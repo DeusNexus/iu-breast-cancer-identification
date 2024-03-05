@@ -68,9 +68,33 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 # Dataset Quality Evaluation
 **Exploratory Data Analysis (EDA)**: Conduct a thorough exploration of the dataset, examining statistical summaries, distributions, and relationships between variables.
 
+<img src="docs/eda_boxplots.png" alt="EDA Boxplots" width="500">
+
+<img src="docs/eda_corr_heatmap.png" alt="Correlation Heatmap" width="500">
+
+<img src="docs/eda_diagnosis_distribution.png" alt="Diagnosis Distribution" width="500">
+
+<img src="docs/eda_histplot_kde.png" alt="Histplot with KDE" width="500">
+
+<img src="docs/eda_optimal_cluster_KMeans.png" alt="Optimal Clusters KMeans" width="500">
+
+<img src="docs/eda_optimal_cluster_SpectralClustering.png" alt="Optimal Clusters SpectralClustering" width="500">
+
+<img src="docs/eda_outliers.png" alt="Outliers" width="500">
+
+<img src="docs/eda_pairplot_mean.png" alt="Pairplot Mean" width="500">
+
+<img src="docs/eda_pairplot_se.png" alt="Pairplot SE" width="500">
+
+<img src="docs/eda_pairplot_worst.png" alt="Pairplot Worst" width="500">
+
+<img src="docs/eda_pca_clusters.png" alt="PCA Clusters" width="500">
+
+
 **Data Cleaning**: Check for missing values, outliers, and inconsistencies.
 
 **Visualizations**: Create visualizations to effectively communicate key relationships and patterns within the data, ensuring business partners can understand important aspects easily.
+
 
 # Candidate Models
 **Interpretability Rating**
