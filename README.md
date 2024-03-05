@@ -77,7 +77,7 @@ The project will be organized using the CRISP-DM (Cross-Industry Standard Proces
 # Candidate Models
 **Interpretability Rating**
 
-<img src="/docs/train_model_comparison_with_interpretability.jpg" alt="Interpretability Rating" width="500">
+<img src="/docs/train_model_metrics_comparison_with_interpretability.jpg" alt="Interpretability Rating" width="500">
 
 **Comparison ROC AUC Scores**
 
